@@ -1,0 +1,2 @@
+{ "name": "buku-bon", "version": "0.1.0", "type": "module", "license": "MIT",
+  "scripts": { "test": "node skeleton/parser.test.mjs", "start": "npx --yes serve ." } }
