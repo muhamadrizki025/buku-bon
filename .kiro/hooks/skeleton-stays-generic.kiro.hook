@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "name": "Keep the skeleton generic",
+  "description": "Guard the Skeleton Crew rule: app-specific words or logic must not leak into skeleton/.",
+  "version": "1",
+  "when": { "type": "fileEdited", "patterns": ["skeleton/**/*.js"] },
+  "then": { "type": "askAgent", "prompt": "Check the edited skeleton file for app-specific terms (warung, kasbon, ojol, bensin, utang) or logic. If any exist, move them into the relevant app-*/config.js and expose a generic config hook instead." }
+}
