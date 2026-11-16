@@ -1,5 +1,35 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Buku Bon</title><link rel="stylesheet" href="skeleton/style.css"></head>
-<body><main><header><h1>Buku Bon</h1><p>A voice-first Indonesian ledger skeleton. One foundation, two apps.</p></header>
-<ul class="list"><li><a href="app-warung/">Kasbon Warung</a> — who owes the corner shop</li>
-<li><a href="app-ojol/">Dompet Ojol</a> — a ride-hailing driver's daily net</li></ul></main></body></html>
+<!doctype html><html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0f766e">
+<title>Buku Bon — Catat buku dengan suara</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="skeleton/style.css">
+<style>
+.hero{text-align:center;padding:40px 20px 30px}
+.hero h1{font-size:2.5em;margin:0;color:var(--accent)}
+.hero p{font-size:1.1em;color:var(--muted);margin:10px 0 0}
+.apps{display:grid;gap:16px;margin-top:30px}
+.app-card{background:#fff;border-radius:18px;padding:24px;box-shadow:0 2px 8px #0002;text-decoration:none;color:var(--ink);display:block;transition:transform 0.2s}
+.app-card:active{transform:scale(0.98)}
+.app-card h2{margin:0 0 8px;font-size:1.4em}
+.app-card p{margin:0;color:var(--muted);line-height:1.5}
+.app-card.warung h2{color:#b45309}
+.app-card.ojol h2{color:#15803d}
+</style>
+</head>
+<body><main>
+<div class="hero">
+  <h1>Buku Bon</h1>
+  <p>Catat buku pakai suara, nggak perlu ngetik</p>
+</div>
+<div class="apps">
+  <a href="app-warung/" class="app-card warung">
+    <h2>Kasbon Warung</h2>
+    <p>Catat utang pelanggan dan pembayaran, langsung tahu siapa masih ngutang berapa.</p>
+  </a>
+  <a href="app-ojol/" class="app-card ojol">
+    <h2>Dompet Ojol</h2>
+    <p>Hitung pemasukan dan pengeluaran harian, pantau target dan bensin tanpa lepas setang.</p>
+  </a>
+</div>
+</main></body></html>

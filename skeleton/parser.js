@@ -77,6 +77,15 @@ export function parseUtterance(text, config) {
   const intent = parseIntent(text, config.intents);
   const party = config.needsParty ? parseParty(text) : null;
   const tag = (config.tags || []).find(tg => tg.keywords.some(k => (' ' + normalize(text) + ' ').includes(' ' + k + ' ')));
+  
+  // Handle settle intent: if intent has settle flag and party exists but no amount
+  const isSettle = intent && intent.settle && party && !a;
+  
+  // Handle meta intent: if intent has meta flag and amount exists
+  const isMeta = Boolean(intent && intent.meta && a);
+  
+  const ok = isMeta || Boolean((a || isSettle) && intent && (!config.needsParty || party));
+  
   return {
     raw: text,
     amount: a ? a.amount : null,
@@ -84,7 +93,9 @@ export function parseUtterance(text, config) {
     sign: intent ? intent.sign : 0,
     party,
     tag: tag ? tag.id : null,
-    ok: Boolean(a && intent && (!config.needsParty || party)),
+    settle: isSettle,
+    meta: isMeta && intent ? intent.meta : null,
+    ok,
   };
 }
 

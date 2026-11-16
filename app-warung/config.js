@@ -7,7 +7,7 @@ export default {
   listTitle: 'Riwayat kasbon', needsParty: true,
   intents: [
     { id: 'utang', label: 'Utang', sign: 1, keywords: ['ngutang','utang','hutang','kasbon','ngebon','bon','pinjam'] },
-    { id: 'bayar', label: 'Bayar', sign: -1, keywords: ['bayar','nyicil','cicil','lunas','lunasin','setor'] },
+    { id: 'bayar', label: 'Bayar', sign: -1, settle: true, keywords: ['bayar','nyicil','cicil','lunas','lunasin','setor'] },
   ],
   describe: e => `${e.party} · ${e.intent === 'utang' ? 'ngutang' : 'bayar'}`,
   missingHelp: p => !p.party ? 'Sebut nama pakai sapaan, mis. “Bu Sri”.' : !p.amount ? 'Sebut jumlahnya, mis. “lima belas ribu”.' : 'Sebut “ngutang” atau “bayar”.',

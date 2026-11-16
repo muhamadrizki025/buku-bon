@@ -1,9 +1,13 @@
 // Buku Bon skeleton — local-first ledger store (localStorage, per app namespace).
 export function createStore(ns, storage = globalThis.localStorage) {
   const key = 'bukubon:' + ns;
+  const metaKey = 'bukubon:meta:' + ns;
   const load = () => { try { return JSON.parse(storage.getItem(key)) || []; } catch { return []; } };
+  const loadMeta = () => { try { return JSON.parse(storage.getItem(metaKey)) || {}; } catch { return {}; } };
   let entries = load();
+  let meta = loadMeta();
   const save = () => storage.setItem(key, JSON.stringify(entries));
+  const saveMeta = () => storage.setItem(metaKey, JSON.stringify(meta));
   return {
     all: () => entries.slice(),
     add(e) { const entry = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), at: new Date().toISOString(), ...e }; entries.unshift(entry); save(); return entry; },
@@ -15,6 +19,8 @@ export function createStore(ns, storage = globalThis.localStorage) {
       return m;
     },
     sumWhere(pred) { return entries.filter(pred).reduce((s, e) => s + e.sign * e.amount, 0); },
+    getMeta(k) { return meta[k]; },
+    setMeta(k, v) { meta[k] = v; saveMeta(); },
     toCSV() {
       const rows = [['waktu','jenis','pihak','tag','jumlah','ucapan']];
       for (const e of entries) rows.push([e.at, e.intent, e.party || '', e.tag || '', e.sign * e.amount, '"' + (e.raw || '').replace(/"/g, '""') + '"']);

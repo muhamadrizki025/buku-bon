@@ -23,3 +23,16 @@ User story: As a warung owner, I want to say amounts the way I normally talk, so
 
 ## R6 Graceful degradation
 - IF the browser lacks SpeechRecognition THEN the mic SHALL be disabled with an explanation and typing SHALL still work.
+
+## R7 Offline support
+- WHEN the user visits the app for the first time and has network THEN the system SHALL cache all resources.
+- WHEN the user visits again without network THEN the system SHALL load from cache and work fully offline.
+
+## R8 Settle balance (Kasbon Warung)
+- WHEN an intent has the `settle` flag AND the utterance contains a party but no amount THEN the system SHALL calculate the amount from that party's current balance.
+- WHEN settling a balance of zero or negative THEN the system SHALL inform the user and not record an entry.
+
+## R9 Metadata storage (Dompet Ojol target)
+- WHEN an intent has the `meta` flag AND the utterance contains an amount THEN the system SHALL store that value as metadata rather than creating an entry.
+- WHEN the config's summary function requests metadata THEN the system SHALL provide the stored value.
+- The summary function MAY display weekly aggregates, progress bars, or other computed views based on entries and metadata.

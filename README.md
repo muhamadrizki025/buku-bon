@@ -28,3 +28,7 @@ Voice needs Chrome/Edge (Web Speech API, `id-ID`). Every flow also works by typi
 
 ## License
 MIT
+
+## Built with Kiro
+
+Spec, steering and hooks live in `.kiro/`. Condensed logs of the Kiro CLI sessions that built tasks 10–14 are in `docs/kiro-sessions/`.

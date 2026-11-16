@@ -9,8 +9,8 @@
 - [x] 7. App A Kasbon Warung config (R5)
 - [x] 8. App B Dompet Ojol config (R5)
 - [x] 9. Parser unit + property round-trip tests (P1)
-- [ ] 10. Handle "juta" combined with "ribu" in fast speech without pauses, add cases to tests
-- [ ] 11. Offline: add a service worker so both apps load without signal
-- [ ] 12. Kasbon Warung: "lunas" clears that customer's balance to zero
-- [ ] 13. Dompet Ojol: weekly view and target ("target hari ini 200 ribu")
-- [ ] 14. Polish UI and record the demo video (under 3 minutes)
+- [x] 10. Handle "juta" combined with "ribu" in fast speech without pauses, add cases to tests
+- [x] 11. Offline: add a service worker so both apps load without signal
+- [x] 12. Kasbon Warung: "lunas" clears that customer's balance to zero
+- [x] 13. Dompet Ojol: weekly view and target ("target hari ini 200 ribu")
+- [x] 14. Polish UI (SVG mic, landing page, manifest, footer) — video recording pending
