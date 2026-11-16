@@ -1,5 +1,6 @@
 // Buku Bon service worker — cache-first with network update for offline support.
 const CACHE_NAME = 'bukubon-v2';
+// When adding a new app folder, add its index.html and config.js to PRECACHE.
 const PRECACHE = [
   './',
   './index.html',

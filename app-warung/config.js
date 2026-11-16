@@ -3,14 +3,15 @@ export default {
   id: 'kasbon-warung', title: 'Kasbon Warung', accent: '#b45309',
   tagline: 'Catat utang pelanggan cukup dengan bicara.',
   placeholder: 'mis. Bu Sri ngutang lima belas ribu',
-  hint: 'Ketuk mikrofon: “Pak Budi ngutang dua puluh ribu” atau “Bu Sri bayar sepuluh ribu”.',
+  hint: 'Ketuk mikrofon: "Pak Budi ngutang dua puluh ribu" atau "Bu Sri bayar sepuluh ribu".',
   listTitle: 'Riwayat kasbon', needsParty: true,
   intents: [
     { id: 'utang', label: 'Utang', sign: 1, keywords: ['ngutang','utang','hutang','kasbon','ngebon','bon','pinjam'] },
     { id: 'bayar', label: 'Bayar', sign: -1, settle: true, keywords: ['bayar','nyicil','cicil','lunas','lunasin','setor'] },
   ],
   describe: e => `${e.party} · ${e.intent === 'utang' ? 'ngutang' : 'bayar'}`,
-  missingHelp: p => !p.party ? 'Sebut nama pakai sapaan, mis. “Bu Sri”.' : !p.amount ? 'Sebut jumlahnya, mis. “lima belas ribu”.' : 'Sebut “ngutang” atau “bayar”.',
+  missingHelp: p => !p.party ? 'Sebut nama pakai sapaan, mis. "Bu Sri".' : !p.amount ? 'Sebut jumlahnya, mis. "lima belas ribu".' : 'Sebut "ngutang" atau "bayar".',
+  settleEmpty: party => `${party} tidak punya utang.`,
   summary(store, rp) {
     const bal = store.balanceBy('party');
     const owing = Object.entries(bal).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]);

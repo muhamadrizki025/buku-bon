@@ -69,7 +69,8 @@ export function mountBukuBon(root, config) {
       const bal = store.balanceBy('party');
       const owed = bal[pending.party] || 0;
       if (owed <= 0) {
-        p.innerHTML = `<p>"${pending.raw}"</p><p>${pending.party} tidak punya utang.</p><button id="no" class="ghost">OK</button>`;
+        const msg = config.settleEmpty ? config.settleEmpty(pending.party) : `${pending.party} has no balance to settle.`;
+        p.innerHTML = `<p>"${pending.raw}"</p><p>${msg}</p><button id="no" class="ghost">OK</button>`;
         $('#no').onclick = () => { pending = null; p.hidden = true; };
         pending = null;
         return;
